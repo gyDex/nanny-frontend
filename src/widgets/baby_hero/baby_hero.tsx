@@ -32,7 +32,7 @@ const BabyHero = () => {
     viewport={{ amount: 0.5 }} className={styles['baby-hero']}>
             <div className={styles['baby-hero__bg']}>
             <video
-                src="/images/baby-hero/video.mp4"
+                src="https://rccsowmhkwlvmka0.public.blob.vercel-storage.com/4896504-hd_1920_1080_30fps.mp4"
                 width={100}
                 height={100}
                 autoPlay

@@ -661,13 +661,13 @@ const ResponsePage = () => {
             </div>
 
             <div className={styles['response__video-item']}>
-                {/* <video
-                    src={'/images/video-block/video.mp4'}
+                <video
+                    src={'https://rccsowmhkwlvmka0.public.blob.vercel-storage.com/video.mp4'}
                     loop
                     playsInline                 
-                ></video> */}
+                ></video>
 
-                <Image alt='' src={'/images/card-babysit/image.jpg'} height={100} width={100} className='object-cover rounded-[16px] w-[214px] ' />
+                {/* <Image alt='' src={'/images/card-babysit/image.jpg'} height={100} width={100} className='object-cover rounded-[16px] w-[214px] ' /> */}
 
                 <div className={styles['response__video-item-right']}>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -676,7 +676,13 @@ const ResponsePage = () => {
                     </svg>
 
 
-                    <Link href={'https://drive.google.com/file/d/1wOAwx_9-NFWtigsVYnrMPXsMHu9VxzC1/view?usp=sharing'} className={styles['response__video-item-title']}>Посмотреть обучающее видео</Link>
+                    <a
+                    className={styles['response__video-item-title']}
+                      href="https://drive.google.com/uc?export=download&id=1PlcYcVAArrzgdtnJNlrgJnq73fcomaR2"
+                      download
+                    >
+                      Посмотреть обучающее видео
+                    </a>
                 </div>
             </div>
 
