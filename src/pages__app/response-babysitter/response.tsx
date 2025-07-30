@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import styles from './response.module.scss'
 import Button from '@/shared/compontents/Button'
-import Link from 'next/link'
 import AudioPlayer from '@/widgets/AudioPlayer/AudioPlayer'
 import { useEffect, useState } from 'react'
 import Calendar from '@/widgets/Calendar/Calendar'
