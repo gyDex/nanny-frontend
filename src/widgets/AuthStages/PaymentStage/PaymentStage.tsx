@@ -1,10 +1,10 @@
 'use client';
 
-import { useAuth } from '@/entities/stores/useAuth';
 import styles from './PaymentStage.module.scss'
 import Button from '@/shared/compontents/Button';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { subscribe } from '@/shared/api/parentApi';
 
 type Props = {
   without_sub: boolean,
@@ -12,9 +12,19 @@ type Props = {
 
 
 const PaymentStage:React.FC<Props> = ({without_sub}) => {
-    const authState = useAuth();
 
-    const route = useRouter();
+    const router = useRouter();
+
+    const handleClick = async() => {
+        try {
+            await subscribe();
+
+            console.log('click')
+            router.push('/profile-parent/vacancy')
+        } catch (error) {
+            console.error('Ошибка при запросе кода:', error);
+        }
+    }
 
     return (
         <section className={styles['code-stage']}>
@@ -62,10 +72,7 @@ const PaymentStage:React.FC<Props> = ({without_sub}) => {
             </ul>
 
             <div className={styles['code-stage__bottom']}>
-                <Button onClick={() => {
-                    authState.setAuth(true);
-                    route.push('/parent')
-                }} style={{
+                <Button onClick={handleClick} style={{
                     marginTop: '0px',
                 }} text='Оплатить' variation='second' type='button' />
                 <button className={styles['code-stage__bottom-btn']}>

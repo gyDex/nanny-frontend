@@ -13,9 +13,10 @@ type Props = {
     isDetail?: boolean,
     IsRes?: boolean,
     verified?: boolean,
+    childrens: []
 }
 
-const ResponseFeedback:React.FC<Props> = ({IsRes=false, verified = true, isEdit = false,isDetail = false, isRes = true ,person, quote, tasks, name}) => {
+const ResponseFeedback:React.FC<Props> = ({childrens, IsRes=false, verified = true, isEdit = false,isDetail = false, isRes = true ,person, quote, tasks, name}) => {
     const modalState = useMobileState();
 
   return (
@@ -81,10 +82,14 @@ const ResponseFeedback:React.FC<Props> = ({IsRes=false, verified = true, isEdit 
             </div>
 
         </div>
-        <div className={styles['response-feedback__top-labels']}>
-            <div className={styles['response-feedback__top-label']}>
-                <b>Мальчик, 4 года</b>
-            </div>
+        <div className={styles['response-feedback__top-labels']}>{
+                (childrens !== undefined && childrens !== null) && 
+                    childrens.map((item) => <>
+                        <div className={styles['response-feedback__top-label']}>
+                            <b>{item.gender === 'male' ? 'Мальчик' : 'Девочка'}, {item.age} года</b>
+                        </div>
+                    </>) 
+            }
 
             <div className={styles['response-feedback__top-label']}>
                 Будни, 9:00 – 13:00

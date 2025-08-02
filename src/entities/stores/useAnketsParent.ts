@@ -40,7 +40,7 @@ export const useAnketsParent = create<AnketParent>((set) => ({
     location: '',
     description: '',
     duties: new Array(14).fill(false), 
-    occupation: [],
+    occupation: [false, false, false, false, false, false],
     chart: '',
     calendar: '',
     typePay: '',

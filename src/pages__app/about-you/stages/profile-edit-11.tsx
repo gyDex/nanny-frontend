@@ -9,6 +9,8 @@ import { useForm } from 'react-hook-form';
 import { EditorState } from 'draft-js';
 import z from 'zod';
 import { useMobileState } from '@/entities/stores/useMobileModal';
+import { editData } from '@/shared/api/nannyApi';
+import { useAuth } from '@/entities/stores/useAuth';
 
 const schema = z.object({
   about: z.any(), // we validate manually in the component
@@ -19,7 +21,9 @@ const ProfileEditElevenStage = () => {
 
   const mobileState = useMobileState();
 
-  const { setAbout, about } = useAnketsBabysitter();
+  const { setAbout, about, education, age, ageBabysitter, description, jobs, name,
+    occupation, question, typePay, duties, count, 
+  } = useAnketsBabysitter();
 
     const {
     control,
@@ -31,6 +35,8 @@ const ProfileEditElevenStage = () => {
       about: EditorState.createEmpty(),
     },
   });
+
+  const {user} = useAuth();
 
   const [errorsText, setErrors] = useState('');
 
@@ -47,7 +53,20 @@ const ProfileEditElevenStage = () => {
       return;
     }
 
-    setAbout(text)
+    setAbout(text);
+
+    const result = {
+      about: about,
+      education: education,
+      jobs: jobs,
+      occupancy: '',
+      experience: count.toString(),
+      agesBaby: [...ageBabysitter],
+      duties: [...duties],
+      advantages: [...duties],
+    }
+
+    await editData(user.id, result);
 
     console.log('Submitted:', text);
     stage.setStage('final')
