@@ -23,8 +23,6 @@ const CodeStage = () => {
 
     const authState = useAuth();
 
-    const router = useRouter();
-
     const {
         handleSubmit,
         register,
@@ -40,20 +38,19 @@ const CodeStage = () => {
             await verifyCode({phone:authState.phone, code: data.code,});
 
             const res = await api.get('/auth/get-me', { withCredentials: true });
-            console.log(res)
+
+            authState.setAuth(true);
+            authState.setUser(res.data)
+            authState.setRole(res.data.roles?.[0]);
+
+            console.log(authState)
+
             if (res.data.parentProfile !== null) {
                 if (res.data.parentProfile.subscribe === undefined || res.data.parentProfile.subscribe === null) {
-                    
-                        
                     registerStage.setStage('payment');
                 }
             }
 
-            authState.setAuth(true);
-            authState.setRole(res.data.roles?.[0]);
-
-
-            // registerStage.setStage('code')
         } catch (error) {
             console.error('Ошибка при запросе кода:', error);
         }
@@ -71,7 +68,7 @@ const CodeStage = () => {
                 Изменить номер
             </button>
 
-            <form  className={styles['phone-stage__bottom']} action="" onSubmit={handleSubmit(onSubmit)}>
+            <form  className={styles['code-stage__bottom']} action="" onSubmit={handleSubmit(onSubmit)}>
                 <input type="text" {...register('code')} placeholder='Введите код' className={styles['code-stage__input']} />
 
                 <Button  style={{

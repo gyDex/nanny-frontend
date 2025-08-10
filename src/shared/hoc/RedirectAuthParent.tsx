@@ -24,7 +24,17 @@ const RedirectAuthParent: React.FC<Props> = ({ children }) => {
     }
   }, [isAuth, user, roleAuth, router])
 
-  if (isAuth === undefined || !user?.roles?.[0]) return <>...Загрузка</>
+  if (isAuth === undefined || !user?.roles?.[0]) 
+    return (  
+        <div className="w-full flex justify-center h-[85svh] items-center">
+          <div className="w-full max-w-[1200px] items-center">
+            <div className="flex flex-col items-center gap-2">
+              <div className="animate-spin rounded-full h-10 w-10 border-4 border-t-transparent border-[#7733F4]"></div>
+              <span className="text-sm text-gray-600">Загрузка...</span>
+            </div>
+          </div>
+        </div>               
+    )
 
   return <>{children}</>
 }

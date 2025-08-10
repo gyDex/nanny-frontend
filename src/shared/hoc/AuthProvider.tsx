@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getMe } from "../api/authApi";
 import { useAuth } from "@/entities/stores/useAuth";
 import { setRoleCookies } from "@/features/setRoleCookie";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 
 type Props = {
@@ -16,9 +16,11 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   const setPhone = useAuth(state => state.setPhone);
   const setRole = useAuth(state => state.setRole);
   const setUser = useAuth(state => state.setUser);
-  const {isAuth} = useAuth();
+  const { roleAuth } = useAuth();
 
   const router = useRouter();
+
+  const pathName = usePathname();
 
   useEffect(() => {
     const initMe = async () => {
@@ -30,19 +32,31 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
         setPhone(user.phone || '');
         setAuth(true);
         setUser(user);
+
+        if (user === undefined && roleAuth === 'NANNY') {
+          router.replace('/babysitter')
+          return;
+        }
+
+        if (user === undefined && roleAuth === 'PARENT') {
+          router.replace('/parent')
+          return;
+        }
         
         if (user.nannyProfile) {
+          if (user.nannyProfile.isValidated) {
+              router.replace('/profile-babysitter/response/')
+          }
           if (user.nannyProfile.isValidated !== true) {
               router.replace('/about-you/response/')
           }
         }
 
-        if (user.parentProfile) {
-          // if (user.nannyProfile.isValidated !== true) {
-            // console.log(user)
-              // router.replace('/about-you/response/')
-          // }
+        if (user.parentProfile && pathName === '/') {
+          router.replace('/profile-parent/vacancy/')
         }
+
+        
 
         // else {
             
@@ -50,15 +64,11 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
       } catch (error) {
         console.log(error)
         setAuth(false);
-      } finally {
-        // setInitialized(true);
       }
     };
 
     initMe();
   }, [setAuth, setPhone, setRole, setUser]);
-
-//   if (!initialized) return null;
 
   return <>{children}</>;
 };

@@ -21,9 +21,14 @@ const ProfileEditElevenStage = () => {
 
   const mobileState = useMobileState();
 
-  const { setAbout, about, education, age, ageBabysitter, description, jobs, name,
-    occupation, question, typePay, duties, count, 
-  } = useAnketsBabysitter();
+const { setAbout, about, education, age, ageBabysitter, jobs, name,
+  occupation, typePay, duties, count,
+  pathAvatar,
+  pathAudio,
+  pathEducation,
+  email, chart, pay, location,
+  setAvatar, setAudio
+} = useAnketsBabysitter();
 
     const {
     control,
@@ -55,16 +60,42 @@ const ProfileEditElevenStage = () => {
 
     setAbout(text);
 
+    console.log(about)
+    console.log(education)
+    console.log(jobs)
+
     const result = {
-      about: about,
-      education: education,
-      jobs: jobs,
-      occupancy: '',
-      experience: count.toString(),
-      agesBaby: [...ageBabysitter],
-      duties: [...duties],
-      advantages: [...duties],
+      nanny: {
+        about: about,
+        education: education,
+        jobs: jobs,
+        typePay: typePay,
+        pay: pay,
+        experience: count.toString(),
+        agesBaby: age.map((item: any) => {
+          if (item.select === null || item.select === undefined || Object.keys(item).length === 0) {
+            return false
+          }
+          return item.select
+        } ),
+        duties: [...duties],
+        advantages: [...duties],
+        charts: chart,
+        occupancy: occupation,
+        isValidated: true,
+        audioFile: pathAudio,
+        educationFile: pathEducation,
+      },
+      user: {
+        email: email,
+        fullName: name,
+        age: ageBabysitter,
+        residency: location,
+        userAvatar: pathAvatar,
+      }
     }
+
+    console.log(result)
 
     await editData(user.id, result);
 
@@ -116,7 +147,9 @@ const ProfileEditElevenStage = () => {
             <span className='font-[onest] max-[768px]:hidden font-semibold text-[16px] leading-[26px] block mb-[16px]'>
                 Загрузить <br /> фотографию
             </span>
-            <FileUploadBox title='Загрузите фотографию' types='JPEG, PNG' className={'!min-h-[130px]'} text={<>
+            <FileUploadBox onUpload={(path: any) => {
+              setAvatar(path)
+            }} className={'!min-h-[130px]'} text={<>
               Перетяните или <br /> <span className="text-[#431DED]">загрузите</span> файлы
 
             </>} description='JPEG, PNG, PDF'/>
@@ -125,7 +158,9 @@ const ProfileEditElevenStage = () => {
             <span className='font-[onest] max-[768px]:hidden font-semibold text-[16px] leading-[26px] block mb-[16px]'>
                 Загрузите голосовое <br /> или видео о себе 
             </span>
-            <FileUploadBox title='Загрузите голосовое или видео о себе ' types='MP3, MP4, WAV, OGG' className={'!min-h-[130px]'} text={<>
+            <FileUploadBox onUpload={(path: any) => {
+              setAudio(path)
+            }} className={'!min-h-[130px]'} text={<>
               Перетяните или <br /> <span className="text-[#431DED]">загрузите</span> файлы
 
             </>} description='JPEG, PNG, PDF'/>

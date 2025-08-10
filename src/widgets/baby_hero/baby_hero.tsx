@@ -7,6 +7,7 @@ import { useHeader } from '@/entities/stores/useHeader';
 import { useEffect, useRef } from 'react';
 import { useInView } from 'framer-motion';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 const BabyHero = () => {
     const headerState = useHeader();
@@ -16,6 +17,8 @@ const BabyHero = () => {
     once: false, 
     margin: '25px 0px', 
   });
+
+  const router = useRouter();
 
   useEffect(() => {
     if (isInView) {
@@ -55,7 +58,7 @@ const BabyHero = () => {
                 <Button style={{
                     paddingInline: '38px',
                 }} text='Зарегистрироваться'  type='button' />
-                <Button text='Посмотреть вакансии' variation='three' type='button' />
+                <Button onClick={() => router.push('/profile-babysitter/vacancy')} text='Посмотреть вакансии' variation='three' type='button' />
             </div>
 
             <div className={styles['baby-hero__bottom-inner']}>

@@ -12,7 +12,7 @@ const ProfileEditSevenStage = () => {
 
   const router = useRouter();
 
-    const { setName, setEmail, setLocation, location, name, email, calendar, children, description, occupation, duties, question, typePay,  } = useAnketsParent();
+  const { setName, setEmail, setLocation, location, name, email, calendar, children, description, occupation, duties, question, typePay,  } = useAnketsParent();
   
   const [errors, setErrors] = useState({
     fullName: '',

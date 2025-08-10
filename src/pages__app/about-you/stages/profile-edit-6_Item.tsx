@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { useAnketsBabysitter } from '@/entities/stores/useAnketsBabysitter';
 
 type Props = {
     name: string,
@@ -21,7 +22,7 @@ type Props = {
 
 const ProfileEditSixStageItem:React.FC<Props>  = ({value, id, name, description,maxSlider,minSlider, selectedValue, setSelectedValue}) => {
 
-    const [sliderValue, setSliderValue] = useState<[number, number]>([0, 100]) as any
+    const { pay, setPay }  = useAnketsBabysitter();
 
     const toRealValue = (val: number) =>
     Math.round(maxSlider + (minSlider - maxSlider) * (val / 100));
@@ -47,15 +48,15 @@ const ProfileEditSixStageItem:React.FC<Props>  = ({value, id, name, description,
 
             <span className={selectedValue === value ? styles['profile-edit-stage__slider-description'] :
                 styles['profile-edit-stage__slider-description_disabled']
-            }> От {toRealValue(sliderValue[0])} до {toRealValue(sliderValue[1])}</span>
+            }> От {selectedValue === value ? toRealValue(pay[0] as any) : maxSlider} до {selectedValue === value ? toRealValue(pay[1]) : minSlider}</span>
 
-            <Slider disabled={selectedValue !== value} step={1} // каждый % — 1 шаг
+            <Slider disabled={selectedValue !== value} step={1}
   min={0}
   max={100}
-  value={sliderValue}
+  value={selectedValue === value ? pay : [0, maxSlider]}
   onChange={(val: any) => {
     if (Array.isArray(val)) {
-      setSliderValue(val);
+      setPay([toRealValue(val[0]), toRealValue(val[1])]);
       console.log('Реальные значения:', [toRealValue(val[0]), toRealValue(val[1])]);
     }
   }}

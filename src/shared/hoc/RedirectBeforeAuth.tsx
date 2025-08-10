@@ -15,10 +15,10 @@ const RedirectBeforeAuth:React.FC<Props> = ({children}) => {
     const router = useRouter();
 
     console.log('auth')
+        console.log(user)
 
     useEffect(() => {
         if (isAuth && user !== null && user.roles[0] === 'PARENT') {
-            console.log('parent')
             if (user.parentProfile.subscribe) {
                 const expiresAt = new Date(user.parentProfile.subscribe.expiresAt);
                 const now = new Date();
@@ -32,9 +32,16 @@ const RedirectBeforeAuth:React.FC<Props> = ({children}) => {
             }
         }
 
-        // if (isAuth && role !== undefined && role === 'NANNY') {
-            
-        // }
+        if (isAuth && user !== null && user.roles[0] === 'NANNY') {
+            if (user.nannyProfile.isValidated) {
+                router.replace('/profile-babysitter/response');
+                return;
+            }
+            else if (!user.nannyProfile.isValidated) {
+                router.replace('/about-you');
+                return;
+            }
+        }
 
     }, [isAuth, roleAuth, router, user]);
     

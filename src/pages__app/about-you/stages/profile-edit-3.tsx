@@ -32,17 +32,15 @@ const ProfileEditThreeStage = () => {
         }
     ]
 
+  console.log(age)
+
   useEffect( () => {
-    setAge(ages.map((item) => {
+    setAge(ages.map((item, index) => {
       return {
-        name: item.name,
-        id: item.id,
-        select: false
+        select: age[index].select
       }
     }))
   },[]) 
-
-  console.log(age)
 
   return (
     <div className={styles['profile-edit-stage']}>
@@ -80,7 +78,7 @@ const ProfileEditThreeStage = () => {
 
                     if (age[index].select !== true) {
                         prev[index] = {
-                          ...prev[index],
+                          // ...prev[index],
                           select: true,
                         };
                         setAge(prev)
@@ -88,7 +86,7 @@ const ProfileEditThreeStage = () => {
                     }
 
                     prev[index] = {
-                      ...prev[index],
+                      // ...prev[index],
                       select: false,
                     };
                     setAge(prev)

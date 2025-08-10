@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Onest } from "next/font/google";
-import "../../globals.css";
 import Header from "@/widgets/Header/Header";
 
 const inter = Inter({

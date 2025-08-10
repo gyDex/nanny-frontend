@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { useAnketsBabysitter } from '@/entities/stores/useAnketsBabysitter';
 
 type Props = {
     name: string,
@@ -21,7 +22,9 @@ type Props = {
 
 const ProfileEditSixStageItem:React.FC<Props>  = ({value, id, name, description,maxSlider,minSlider, selectedValue, setSelectedValue}) => {
 
-    const [sliderValue, setSliderValue] = useState<[number, number]>([0, 100]) as any
+    const [sliderValue, setSliderValue] = useState<[number, number]>([0, 100]) as any;
+
+    const { pay, setPay }  = useAnketsBabysitter();
 
     const toRealValue = (val: number) =>
     Math.round(maxSlider + (minSlider - maxSlider) * (val / 100));
@@ -56,6 +59,7 @@ const ProfileEditSixStageItem:React.FC<Props>  = ({value, id, name, description,
   onChange={(val: any) => {
     if (Array.isArray(val)) {
       setSliderValue(val);
+      setPay([toRealValue(val[0]), toRealValue(val[1])])
       console.log('Реальные значения:', [toRealValue(val[0]), toRealValue(val[1])]);
     }
   }}
