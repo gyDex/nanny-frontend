@@ -158,7 +158,7 @@ const { setAbout, about, education, age, ageBabysitter, jobs, name,
             <span className='font-[onest] max-[768px]:hidden font-semibold text-[16px] leading-[26px] block mb-[16px]'>
                 Загрузите голосовое <br /> или видео о себе 
             </span>
-            <FileUploadBox onUpload={(path: any) => {
+            <FileUploadBox  onUpload={(path: any) => {
               setAudio(path)
             }} className={'!min-h-[130px]'} text={<>
               Перетяните или <br /> <span className="text-[#431DED]">загрузите</span> файлы

@@ -17,7 +17,7 @@ export const verifyCode = async ({code, phone}: {code: string, phone: string}): 
 };
 
 export const getMe = async () => {
-  const res = await fetch(`http://localhost:3001/auth/get-me`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENV}/auth/get-me`, {
     credentials: 'include',
   });
 

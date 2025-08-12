@@ -47,6 +47,9 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
           if (user.nannyProfile.isValidated) {
               router.replace('/profile-babysitter/response/')
           }
+          if ((pathName === '/about-you/response/' || pathName === '/about-you') && user.nannyProfile.isValidated === true) {
+              router.replace('/profile-babysitter/response/')
+          }
           if (user.nannyProfile.isValidated !== true) {
               router.replace('/about-you/response/')
           }

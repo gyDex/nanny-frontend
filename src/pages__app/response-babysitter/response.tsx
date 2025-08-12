@@ -152,7 +152,7 @@ const ResponsePage = () => {
                     </div>
 
                     <div className='w-full min-[768px]:max-w-[518px] mr-[30px]'>
-                    <FileUploadBox className='min-h-[69px]' description='JPEG, PNG' title='Загрузите фотографию' types='JPEG, PNG' text={<>
+                    <FileUploadBox className='min-h-[69px]' description='JPEG, PNG'  storeKey='person' text={<>
                         Перетяните или <span className="text-[#431DED]">загрузите</span> файлы
 
                         </>}/>
@@ -343,81 +343,7 @@ const ResponsePage = () => {
         </div>
       </Popup>
 
-              <MobileModal
-          btn={false}
-          title={false}
-          onClose={() => mobileState.setOpen(false,'')}
-          isOpen={mobileState.type === 'form_babysitter' && mobileState.isOpen}
-          setOpen={mobileState.setOpen}
-        >
-                <div className='max-h-[300px] pt-[10px] scroll-none overflow-auto'>
-              <div>
-                  <h3 className={styles['response__content-title']}>
-                    Здравствуйте!
-                  </h3>
-
-                  <p className={styles['response__content-description']}>
-                      Я проживаю рядом с м. Марьино и м. Братиславская.
-                      Имею высшее педагогическое образование и рекомендации от предыдущих работодателей.
-                      Опыт работы няней-гувернанткой — более 10 лет, с детьми от 4 до 11 лет.
-                  </p>
-
-                  <h3 className={styles['response__content-title']}>
-                    Обо мне
-                  </h3>
-
-                  <p className={styles['response__content-description']}>
-                    Я — учитель русского языка, работала также с младшими школьниками, воспитателем в детском саду и вожатой в детских лагерях. Организовывала турпоходы, вела литературный, театральный и музыкальный кружки. Применяю в работе методику Монтессори и элементы “грамматики фантазии” Дж. Родари.
-                  </p>
-
-                  <ul className={styles['response__content-bullet-list']}>
-                    <li>Ответственная, внимательная, терпеливая</li>
-                    <li>Артистичная, добрая, весёлая</li>
-                    <li>Хорошо пою, играю на гитаре</li>
-                  </ul>
-
-                  <h3 className={styles['response__content-title']}>
-                    Опыт с детьми
-                  </h3>
-
-                  <p className={styles['response__content-description']}>
-                    Успешно работаю с:
-                  </p>
-
-                  <ul className={styles['response__content-bullet-list']}>
-                    <li>застенчивыми</li>
-                    <li>гиперактивными</li>
-                    <li>детьми с особенностями развития.</li>
-                  </ul>
-
-                  <p className={styles['response__content-description']}>
-                    Обучаю чтению и письму, развиваю нестандартное мышление, память, фантазию. Знаю множество стихов, сказок и песен.
-                  </p>
-
-                  <h3 className={styles['response__content-title']}>
-                    Мои приоритеты:
-                  </h3>
-
-                  <ul className={styles['response__content-bullet-list']}>
-                    <li>Развивающие и подвижные игры</li>
-                    <li>Прогулки и логические задачи (русский/английский)</li>
-                    <li>Чтение, пение, аккомпанемент на гитаре</li>
-                    <li>Индивидуальный подход к каждому ребёнку</li>
-                  </ul>
-
-                  <h3 className={styles['response__content-title']}>
-                    Дополнительно:
-                  </h3>
-
-                  <p className={styles['response__content-description']}>
-                    Организую детские праздники, театральные постановки, монтирую фильмы из фото и видео. Веду дневники развития, создаю фотоальбомы, словарики и памятные коллажи. Готовлю диетические блюда, избегаю жарки. Люблю животных — могу ухаживать за питомцем, при необходимости забрать к себе.
-                  </p>
-              </div>
-
-                </div>
-        </MobileModal>
-
-        <Popup styleMain={{
+              <Popup styleMain={{
               padding: '24px',
               width: '669px',
             }} top={false} title={false} onClose={() => mobileState.setOpen(false, '')}  isOpen={mobileState.isOpen && mobileState.type === 'education'} isNotBtn cross={true} setOpen={mobileState.setOpen}>
@@ -463,191 +389,268 @@ const ResponsePage = () => {
               </div>
         </Popup>
 
-        <MobileModal
-          btn={false}
-          title={false}
-          onClose={() => mobileState.setOpen(false,'')}
-          isOpen={mobileState.type === 'education' && mobileState.isOpen}
-          setOpen={mobileState.setOpen}
-        >
-                <div className='flex flex-col gap-[32px] max-[768px]:gap-[16px]'>
-                  <div className='flex gap-[16px] flex-col'>
-                      <span className='font-[onest] font-semibold max-[768px]:text-[20px]'>
-                        2012–2016
-                      </span>
+        <div className='min-[1240px]:hidden'>
+          <MobileModal
+            btn={false}
+            title={false}
+            onClose={() => mobileState.setOpen(false,'')}
+            isOpen={mobileState.type === 'form_babysitter' && mobileState.isOpen}
+            setOpen={mobileState.setOpen}
+          >
+                  <div className='max-h-[300px] pt-[10px] scroll-none overflow-auto'>
+                <div>
+                    <h3 className={styles['response__content-title']}>
+                      Здравствуйте!
+                    </h3>
 
-                      <span className='font-[onest] font-normal'>
-                        Московский педагогический колледж, специальность «Воспитатель детей дошкольного возраста»
-                      </span>
-                  </div>
-                  <div className='flex gap-[16px] flex-col'>
-                      <span className='font-[onest] font-semibold max-[768px]:text-[20px]'>
-                        2012–2016
-                      </span>
+                    <p className={styles['response__content-description']}>
+                        Я проживаю рядом с м. Марьино и м. Братиславская.
+                        Имею высшее педагогическое образование и рекомендации от предыдущих работодателей.
+                        Опыт работы няней-гувернанткой — более 10 лет, с детьми от 4 до 11 лет.
+                    </p>
 
-                      <span className='font-[onest] font-normal'>
-                        Московский педагогический колледж, специальность «Воспитатель детей дошкольного возраста»
-                      </span>
-                  </div>
-                  <div className='flex gap-[16px] flex-col'>
-                      <span className='font-[onest] font-semibold max-[768px]:text-[20px]'>
-                        2012–2016
-                      </span>
+                    <h3 className={styles['response__content-title']}>
+                      Обо мне
+                    </h3>
 
-                      <span className='font-[onest] font-normal'>
-                        Московский педагогический колледж, специальность «Воспитатель детей дошкольного возраста»
-                      </span>
-                  </div>
-                  <div className='flex gap-[16px] flex-col'>
-                      <span className='font-[onest] font-semibold max-[768px]:text-[20px]'>
-                        2012–2016
-                      </span>
+                    <p className={styles['response__content-description']}>
+                      Я — учитель русского языка, работала также с младшими школьниками, воспитателем в детском саду и вожатой в детских лагерях. Организовывала турпоходы, вела литературный, театральный и музыкальный кружки. Применяю в работе методику Монтессори и элементы “грамматики фантазии” Дж. Родари.
+                    </p>
 
-                      <span className='font-[onest] font-normal'>
-                        Московский педагогический колледж, специальность «Воспитатель детей дошкольного возраста»
-                      </span>
-                  </div>
+                    <ul className={styles['response__content-bullet-list']}>
+                      <li>Ответственная, внимательная, терпеливая</li>
+                      <li>Артистичная, добрая, весёлая</li>
+                      <li>Хорошо пою, играю на гитаре</li>
+                    </ul>
+
+                    <h3 className={styles['response__content-title']}>
+                      Опыт с детьми
+                    </h3>
+
+                    <p className={styles['response__content-description']}>
+                      Успешно работаю с:
+                    </p>
+
+                    <ul className={styles['response__content-bullet-list']}>
+                      <li>застенчивыми</li>
+                      <li>гиперактивными</li>
+                      <li>детьми с особенностями развития.</li>
+                    </ul>
+
+                    <p className={styles['response__content-description']}>
+                      Обучаю чтению и письму, развиваю нестандартное мышление, память, фантазию. Знаю множество стихов, сказок и песен.
+                    </p>
+
+                    <h3 className={styles['response__content-title']}>
+                      Мои приоритеты:
+                    </h3>
+
+                    <ul className={styles['response__content-bullet-list']}>
+                      <li>Развивающие и подвижные игры</li>
+                      <li>Прогулки и логические задачи (русский/английский)</li>
+                      <li>Чтение, пение, аккомпанемент на гитаре</li>
+                      <li>Индивидуальный подход к каждому ребёнку</li>
+                    </ul>
+
+                    <h3 className={styles['response__content-title']}>
+                      Дополнительно:
+                    </h3>
+
+                    <p className={styles['response__content-description']}>
+                      Организую детские праздники, театральные постановки, монтирую фильмы из фото и видео. Веду дневники развития, создаю фотоальбомы, словарики и памятные коллажи. Готовлю диетические блюда, избегаю жарки. Люблю животных — могу ухаживать за питомцем, при необходимости забрать к себе.
+                    </p>
                 </div>
-        </MobileModal>
 
-        <MobileModal
-          btn={false}
-          title={false}
-          onClose={() => mobileState.setOpen(false,'')}
-          isOpen={mobileState.type === 'jobs' && mobileState.isOpen}
-          setOpen={mobileState.setOpen}
-        >
-        <div className='flex flex-col gap-[32px] h-[300px] max-[768px]:gap-[16px] '>
-          <div className='max-h-[100px] h-fit oveflow-scroll'>
-            <div>
-            <div className='flex gap-[5px] max-[768px]:inline'>
-                <span className='font-[onest] max-[768px]:inline-flex text-[20px] font-semibold'>
-                    С 2017 по 2017:
-                </span>
+                  </div>
+          </MobileModal>
 
-                <span className='font-[onest] max-[768px]:inline text-[20px] font-normal'>
-                    вожатая в детском лагере «Звёздочка»
-                </span>
-            </div>
-            
-            <p className='font-[onest] text-[16px] leading-[24px] font-normal block mt-[12px]'>Работала с группой детей 7–10 лет. Организация игр, дневного режима, сопровождение на мероприятия, решение конфликтных ситуаций, обеспечение безопасности.</p>
-            </div>
+          <MobileModal
+            btn={false}
+            title={false}
+            onClose={() => mobileState.setOpen(false,'')}
+            isOpen={mobileState.type === 'education' && mobileState.isOpen}
+            setOpen={mobileState.setOpen}
+          >
+                  <div className='flex flex-col gap-[32px] max-[768px]:gap-[16px]'>
+                    <div className='flex gap-[16px] flex-col'>
+                        <span className='font-[onest] font-semibold max-[768px]:text-[20px]'>
+                          2012–2016
+                        </span>
 
-            <div>
-            <div className='flex gap-[5px] max-[768px]:inline'>
-                <span className='font-[onest] text-[20px] font-semibold'>
-                    С 2017 по 2017:
-                </span>
+                        <span className='font-[onest] font-normal'>
+                          Московский педагогический колледж, специальность «Воспитатель детей дошкольного возраста»
+                        </span>
+                    </div>
+                    <div className='flex gap-[16px] flex-col'>
+                        <span className='font-[onest] font-semibold max-[768px]:text-[20px]'>
+                          2012–2016
+                        </span>
 
-                <span className='font-[onest] text-[20px] font-normal'>
-                    вожатая в детском лагере «Звёздочка»
-                </span>
-            </div>
-            
-            <p className='font-[onest] text-[16px] leading-[24px] font-normal block mt-[12px]'>Работала с группой детей 7–10 лет. Организация игр, дневного режима, сопровождение на мероприятия, решение конфликтных ситуаций, обеспечение безопасности.</p>
-            </div>
+                        <span className='font-[onest] font-normal'>
+                          Московский педагогический колледж, специальность «Воспитатель детей дошкольного возраста»
+                        </span>
+                    </div>
+                    <div className='flex gap-[16px] flex-col'>
+                        <span className='font-[onest] font-semibold max-[768px]:text-[20px]'>
+                          2012–2016
+                        </span>
 
-            <div>
-            <div className='flex gap-[5px] max-[768px]:inline'>
-                <span className='font-[onest] text-[20px] font-semibold'>
-                    С 2017 по 2017:
-                </span>
+                        <span className='font-[onest] font-normal'>
+                          Московский педагогический колледж, специальность «Воспитатель детей дошкольного возраста»
+                        </span>
+                    </div>
+                    <div className='flex gap-[16px] flex-col'>
+                        <span className='font-[onest] font-semibold max-[768px]:text-[20px]'>
+                          2012–2016
+                        </span>
 
-                <span className='font-[onest] text-[20px] font-normal'>
-                    вожатая в детском лагере «Звёздочка»
-                </span>
-            </div>
-            
-            <p className='font-[onest] text-[16px] leading-[24px] font-normal block mt-[12px]'>Работала с группой детей 7–10 лет. Организация игр, дневного режима, сопровождение на мероприятия, решение конфликтных ситуаций, обеспечение безопасности.</p>
-            </div>
+                        <span className='font-[onest] font-normal'>
+                          Московский педагогический колледж, специальность «Воспитатель детей дошкольного возраста»
+                        </span>
+                    </div>
+                  </div>
+          </MobileModal>
 
-            <div>
-            <div className='flex gap-[5px] max-[768px]:inline'>
-                <span className='font-[onest] text-[20px] font-semibold'>
-                    С 2017 по 2017:
-                </span>
-
-                <span className='font-[onest] text-[20px] font-normal'>
-                    вожатая в детском лагере «Звёздочка»
-                </span>
-            </div>
-            
-            <p className='font-[onest] text-[16px] leading-[24px] font-normal block mt-[12px]'>Работала с группой детей 7–10 лет. Организация игр, дневного режима, сопровождение на мероприятия, решение конфликтных ситуаций, обеспечение безопасности.</p>
-            </div>
-          </div>
-        </div>
-        </MobileModal>
-
-            <Popup styleMain={{
-              padding: '24px',
-              width: '669px',
-            }} top={false} title={false} onClose={() => mobileState.setOpen(false, '')}  isOpen={mobileState.isOpen && mobileState.type === 'form_babysitter'} isNotBtn cross={true} setOpen={mobileState.setOpen}>
-                <div className='max-h-[300px] pt-[10px] scroll-none overflow-auto'>
+          <MobileModal
+            btn={false}
+            title={false}
+            onClose={() => mobileState.setOpen(false,'')}
+            isOpen={mobileState.type === 'jobs' && mobileState.isOpen}
+            setOpen={mobileState.setOpen}
+          >
+          <div className='flex flex-col gap-[32px] h-[300px] max-[768px]:gap-[16px] '>
+            <div className='max-h-[100px] h-fit oveflow-scroll'>
               <div>
-                  <h3 className={styles['response__content-title']}>
-                    Здравствуйте!
-                  </h3>
+              <div className='flex gap-[5px] max-[768px]:inline'>
+                  <span className='font-[onest] max-[768px]:inline-flex text-[20px] font-semibold'>
+                      С 2017 по 2017:
+                  </span>
 
-                  <p className={styles['response__content-description']}>
-                      Я проживаю рядом с м. Марьино и м. Братиславская.
-                      Имею высшее педагогическое образование и рекомендации от предыдущих работодателей.
-                      Опыт работы няней-гувернанткой — более 10 лет, с детьми от 4 до 11 лет.
-                  </p>
-
-                  <h3 className={styles['response__content-title']}>
-                    Обо мне
-                  </h3>
-
-                  <p className={styles['response__content-description']}>
-                    Я — учитель русского языка, работала также с младшими школьниками, воспитателем в детском саду и вожатой в детских лагерях. Организовывала турпоходы, вела литературный, театральный и музыкальный кружки. Применяю в работе методику Монтессори и элементы “грамматики фантазии” Дж. Родари.
-                  </p>
-
-                  <ul className={styles['response__content-bullet-list']}>
-                    <li>Ответственная, внимательная, терпеливая</li>
-                    <li>Артистичная, добрая, весёлая</li>
-                    <li>Хорошо пою, играю на гитаре</li>
-                  </ul>
-
-                  <h3 className={styles['response__content-title']}>
-                    Опыт с детьми
-                  </h3>
-
-                  <p className={styles['response__content-description']}>
-                    Успешно работаю с:
-                  </p>
-
-                  <ul className={styles['response__content-bullet-list']}>
-                    <li>застенчивыми</li>
-                    <li>гиперактивными</li>
-                    <li>детьми с особенностями развития.</li>
-                  </ul>
-
-                  <p className={styles['response__content-description']}>
-                    Обучаю чтению и письму, развиваю нестандартное мышление, память, фантазию. Знаю множество стихов, сказок и песен.
-                  </p>
-
-                  <h3 className={styles['response__content-title']}>
-                    Мои приоритеты:
-                  </h3>
-
-                  <ul className={styles['response__content-bullet-list']}>
-                    <li>Развивающие и подвижные игры</li>
-                    <li>Прогулки и логические задачи (русский/английский)</li>
-                    <li>Чтение, пение, аккомпанемент на гитаре</li>
-                    <li>Индивидуальный подход к каждому ребёнку</li>
-                  </ul>
-
-                  <h3 className={styles['response__content-title']}>
-                    Дополнительно:
-                  </h3>
-
-                  <p className={styles['response__content-description']}>
-                    Организую детские праздники, театральные постановки, монтирую фильмы из фото и видео. Веду дневники развития, создаю фотоальбомы, словарики и памятные коллажи. Готовлю диетические блюда, избегаю жарки. Люблю животных — могу ухаживать за питомцем, при необходимости забрать к себе.
-                  </p>
+                  <span className='font-[onest] max-[768px]:inline text-[20px] font-normal'>
+                      вожатая в детском лагере «Звёздочка»
+                  </span>
+              </div>
+              
+              <p className='font-[onest] text-[16px] leading-[24px] font-normal block mt-[12px]'>Работала с группой детей 7–10 лет. Организация игр, дневного режима, сопровождение на мероприятия, решение конфликтных ситуаций, обеспечение безопасности.</p>
               </div>
 
-                </div>
-            </Popup>
+              <div>
+              <div className='flex gap-[5px] max-[768px]:inline'>
+                  <span className='font-[onest] text-[20px] font-semibold'>
+                      С 2017 по 2017:
+                  </span>
+
+                  <span className='font-[onest] text-[20px] font-normal'>
+                      вожатая в детском лагере «Звёздочка»
+                  </span>
+              </div>
+              
+              <p className='font-[onest] text-[16px] leading-[24px] font-normal block mt-[12px]'>Работала с группой детей 7–10 лет. Организация игр, дневного режима, сопровождение на мероприятия, решение конфликтных ситуаций, обеспечение безопасности.</p>
+              </div>
+
+              <div>
+              <div className='flex gap-[5px] max-[768px]:inline'>
+                  <span className='font-[onest] text-[20px] font-semibold'>
+                      С 2017 по 2017:
+                  </span>
+
+                  <span className='font-[onest] text-[20px] font-normal'>
+                      вожатая в детском лагере «Звёздочка»
+                  </span>
+              </div>
+              
+              <p className='font-[onest] text-[16px] leading-[24px] font-normal block mt-[12px]'>Работала с группой детей 7–10 лет. Организация игр, дневного режима, сопровождение на мероприятия, решение конфликтных ситуаций, обеспечение безопасности.</p>
+              </div>
+
+              <div>
+              <div className='flex gap-[5px] max-[768px]:inline'>
+                  <span className='font-[onest] text-[20px] font-semibold'>
+                      С 2017 по 2017:
+                  </span>
+
+                  <span className='font-[onest] text-[20px] font-normal'>
+                      вожатая в детском лагере «Звёздочка»
+                  </span>
+              </div>
+              
+              <p className='font-[onest] text-[16px] leading-[24px] font-normal block mt-[12px]'>Работала с группой детей 7–10 лет. Организация игр, дневного режима, сопровождение на мероприятия, решение конфликтных ситуаций, обеспечение безопасности.</p>
+              </div>
+            </div>
+          </div>
+          </MobileModal>
+        </div>
+
+
+          <Popup styleMain={{
+            padding: '24px',
+            width: '669px',
+          }} top={false} title={false} onClose={() => mobileState.setOpen(false, '')}  isOpen={mobileState.isOpen && mobileState.type === 'form_babysitter'} isNotBtn cross={true} setOpen={mobileState.setOpen}>
+              <div className='max-h-[300px] pt-[10px] scroll-none overflow-auto'>
+            <div>
+                <h3 className={styles['response__content-title']}>
+                  Здравствуйте!
+                </h3>
+
+                <p className={styles['response__content-description']}>
+                    Я проживаю рядом с м. Марьино и м. Братиславская.
+                    Имею высшее педагогическое образование и рекомендации от предыдущих работодателей.
+                    Опыт работы няней-гувернанткой — более 10 лет, с детьми от 4 до 11 лет.
+                </p>
+
+                <h3 className={styles['response__content-title']}>
+                  Обо мне
+                </h3>
+
+                <p className={styles['response__content-description']}>
+                  Я — учитель русского языка, работала также с младшими школьниками, воспитателем в детском саду и вожатой в детских лагерях. Организовывала турпоходы, вела литературный, театральный и музыкальный кружки. Применяю в работе методику Монтессори и элементы “грамматики фантазии” Дж. Родари.
+                </p>
+
+                <ul className={styles['response__content-bullet-list']}>
+                  <li>Ответственная, внимательная, терпеливая</li>
+                  <li>Артистичная, добрая, весёлая</li>
+                  <li>Хорошо пою, играю на гитаре</li>
+                </ul>
+
+                <h3 className={styles['response__content-title']}>
+                  Опыт с детьми
+                </h3>
+
+                <p className={styles['response__content-description']}>
+                  Успешно работаю с:
+                </p>
+
+                <ul className={styles['response__content-bullet-list']}>
+                  <li>застенчивыми</li>
+                  <li>гиперактивными</li>
+                  <li>детьми с особенностями развития.</li>
+                </ul>
+
+                <p className={styles['response__content-description']}>
+                  Обучаю чтению и письму, развиваю нестандартное мышление, память, фантазию. Знаю множество стихов, сказок и песен.
+                </p>
+
+                <h3 className={styles['response__content-title']}>
+                  Мои приоритеты:
+                </h3>
+
+                <ul className={styles['response__content-bullet-list']}>
+                  <li>Развивающие и подвижные игры</li>
+                  <li>Прогулки и логические задачи (русский/английский)</li>
+                  <li>Чтение, пение, аккомпанемент на гитаре</li>
+                  <li>Индивидуальный подход к каждому ребёнку</li>
+                </ul>
+
+                <h3 className={styles['response__content-title']}>
+                  Дополнительно:
+                </h3>
+
+                <p className={styles['response__content-description']}>
+                  Организую детские праздники, театральные постановки, монтирую фильмы из фото и видео. Веду дневники развития, создаю фотоальбомы, словарики и памятные коллажи. Готовлю диетические блюда, избегаю жарки. Люблю животных — могу ухаживать за питомцем, при необходимости забрать к себе.
+                </p>
+            </div>
+
+              </div>
+          </Popup>
 
       <section className={styles['response']}>
         <div className={styles['response__container']}>
@@ -752,8 +755,8 @@ const ResponsePage = () => {
 
                           <a
                           className={styles['response__video-item-title']}
-                            href="https://drive.google.com/uc?export=download&id=1PlcYcVAArrzgdtnJNlrgJnq73fcomaR2"
-                            download
+                            href="https://rccsowmhkwlvmka0.public.blob.vercel-storage.com/video.mp4"
+                            
                           >
                             Посмотреть обучающее видео
                           </a>

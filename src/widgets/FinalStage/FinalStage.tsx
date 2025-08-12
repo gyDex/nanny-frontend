@@ -23,7 +23,7 @@ const FinalStage = () => {
                     </div>
                     
                     <div className="z-[10] relative flex max-[1024px]:!flex-col gap-[12px] w-full items-center mt-[31px]">
-                        <button onClick={() => stage.setStage('eleven')} className={styles['final-stage__btn-bottom_prev']}>
+                        <button onClick={() => stage.setStage('twelve')} className={styles['final-stage__btn-bottom_prev']}>
                         <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.88065 3.95312L2.83398 7.99979L6.88065 12.0465" stroke="#431DED" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M14.1673 8H2.94727" stroke="#431DED" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

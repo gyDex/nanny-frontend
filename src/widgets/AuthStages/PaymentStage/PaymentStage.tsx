@@ -35,7 +35,7 @@ const PaymentStage:React.FC<Props> = ({without_sub}) => {
             console.log(user)
 
             const handlePay = async () => {
-                const res = await fetch('http://localhost:3001/orders/create', {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENV}/orders/create`, {
                     method: 'POST',
                     body: JSON.stringify({ userId: user.id, amount: 1900 }),
                     headers: { 'Content-Type': 'application/json' },

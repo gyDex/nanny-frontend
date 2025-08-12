@@ -7,13 +7,14 @@ type FileWithProgress = {
   progress: number; // 0–100
   status: 'pending' | 'uploading' | 'done' | 'error';
 };
-
 const FileUploadBox: React.FC<{
   description: string;
   text: React.ReactNode;
   className?: string;
   onUpload?: (path: string) => void;
-}> = ({ description, text, className, onUpload }) => {
+  callbackSave?: (path: any) => void;
+  upload?: any,
+}> = ({ description, text, className, onUpload, upload = uploadAudio, callbackSave }) => {
   const [files, setFiles] = useState<FileWithProgress[]>([]);
 
   const uploadFiles = async (filesToUpload: FileWithProgress[], currentFiles: FileWithProgress[]) => {
@@ -30,19 +31,27 @@ const FileUploadBox: React.FC<{
       formData.append('file', f.file);
 
       try {
-        const res =  await uploadAudio(formData, (p) => {
+        const res =  await upload(formData, (p: any) => {
           updatedFiles[index] = { ...updatedFiles[index], progress: p };
           setFiles([...updatedFiles]);
         }) as any;
 
+        if (res.filePath) {
+          res.path = res.filePath;
+        }
+
         console.log(onUpload)
         if (onUpload !== undefined) {
-        console.log(res.path)
-
           onUpload(res.path);
         }
 
-        updatedFiles[index] = { ...updatedFiles[index], status: 'done', progress: 100 };
+        updatedFiles[index] = { ...updatedFiles[index], status: 'done', progress: 100, path: res.path } as any;
+
+        callbackSave?.(updatedFiles.map((item: any) => {
+          if (item.status !== 'error') {
+            return item
+          }
+        }))
         setFiles([...updatedFiles]);
       } catch {
         updatedFiles[index] = { ...updatedFiles[index], status: 'error' };

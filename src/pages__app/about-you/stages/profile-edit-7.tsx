@@ -75,6 +75,23 @@ const ProfileEditSevenStage = () => {
 
                 <button onClick={handleContinue} className={styles['profile-edit-stage__btn-bottom']}>
                     Продолжить
+
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path
+                        d="M9.61935 3.95312L13.666 7.99979L9.61935 12.0465"
+                        stroke="#431DED"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        />
+                        <path
+                        d="M2.33273 8H13.5527"
+                        stroke="#431DED"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        />
+                    </svg>
                 </button>
             </div>
         </div>
