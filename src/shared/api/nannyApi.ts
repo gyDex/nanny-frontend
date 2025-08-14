@@ -35,6 +35,7 @@ export const getSimNanny = async (id: string): Promise<any> => {
 };
 
 export const getAllNannyByCity = async (city: string): Promise<INannyItem[]> => {
+  console.log('city',city)
   const response = await api.get(`/users/nanny/city?city=${city}`);
   return response.data;
 };

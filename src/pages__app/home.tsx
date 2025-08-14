@@ -97,7 +97,7 @@ export const HomePage = () => {
                 {
                   if(selectCity !== '') {
                     mobileState.setOpen(true, 'role')
-                    setCityCookies('city', selectCity)
+                    setCityCookies(selectCity)
                   }
                 }} setOpen={mobileState.setOpen}>
                   <SelectModal callbackChange={setSelectCity} title='Москва и МО' items={cities}    
@@ -112,7 +112,7 @@ export const HomePage = () => {
                 {
                   if(selectCity !== '') {
                     mobileState.setOpen(true, 'role')
-                    setCityCookies('city', selectCity)
+                    setCityCookies(selectCity)
                   }
                 }} setOpen={mobileState.setOpen}  title="Ваш город">
                 <SelectModal callbackChange={setSelectCity} className="!mt-[0px] !max-h-[50px]" title='Москва и МО' items={cities}          
@@ -124,7 +124,7 @@ export const HomePage = () => {
                   (role === undefined && city !== undefined && mobileState.isOpen)
                 }  next={() => {
                   if (selectedValue !== '') {
-                    mobileState.setOpen(false, '')
+                    mobileState.setOpen(true, 'role')
                     setRoleCookies('role', selectedValue)
                     if (selectedValue === 'baby') {
                       router.push('babysitter')
