@@ -28,10 +28,11 @@ const PhoneStage = () => {
         },
         handleSubmit,
         register,
+        setError
     } = useForm({
       resolver: zodResolver(schema),
       defaultValues: {
-        phone: ''
+        phone: authState?.phone
       },
     });
 

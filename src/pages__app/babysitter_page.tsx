@@ -52,7 +52,7 @@ export const BabysitterPage = () => {
             <CookieModal />
 
             <div className="min-[1200px]:hidden">
-                <MobileModal title={'Выбор роли'} isOpen={
+                <MobileModal btn title={'Выбор роли'} isOpen={
                   (role === undefined && mobileState.isOpen && mobileState.type === 'role') || 
                   (role === undefined && city !== undefined && mobileState.isOpen)
                 } next={() => 
@@ -90,7 +90,7 @@ export const BabysitterPage = () => {
                     </RadioGroup>
                 </MobileModal>
 
-                <MobileModal title={'Ваш город'} isOpen={
+                <MobileModal btn title={'Ваш город'} isOpen={
                   (city === undefined && mobileState.isOpen && mobileState.type === '') ||
                   (city === undefined && role !== undefined && mobileState.isOpen)
                 } next={() => 
@@ -127,7 +127,7 @@ export const BabysitterPage = () => {
                     setCityCookies(selectCity)
                   }
                 }} setOpen={mobileState.setOpen}  title="Ваш город">
-                <SelectModal callbackChange={setSelectCity} className="!mt-[0px]" title='Москва и МО' items={cities}          
+                <SelectModal callbackChange={setSelectCity} className="!mt-[0px]" title='Выбрать' items={cities}          
                 />
             </Popup>
 
